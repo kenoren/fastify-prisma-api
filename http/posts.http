@@ -1,0 +1,15 @@
+### set baseUrl=http://localhost:3000
+
+### load all posts
+GET http://localhost:3000/posts
+###
+
+### Create a new post
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+  "title": "My First Post",
+  "content": "This is the content of my first post."
+}
+###
