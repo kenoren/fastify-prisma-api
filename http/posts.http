@@ -10,6 +10,7 @@ Content-Type: application/json
 
 {
   "title": "My First Post",
-  "content": "This is the content of my first post."
+  "content": "This is the content of my first post.",
+  "authorId": 1
 }
 ###
