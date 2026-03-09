@@ -1,11 +1,9 @@
 import Fastify from "fastify"
 import { prisma } from "./prisma"
+import {userRoutes} from "./routes/UserRoutes";
 
 const app = Fastify({ logger: true })
 
-app.get("/posts", async () => {
-    return prisma.post.findMany()
-})
 
 app.get("/posts/:id", async (request, reply) => {
     const { id } = request.params as any
@@ -65,20 +63,7 @@ app.post("/posts", async (request, reply) => {
     return post
 })
 
-app.get("/users", async (request, reply) => {
-    return prisma.user.findMany()
-})
-
-
-app.post("/users", async (request, reply) => {
-    const {login, firstname,lastname} = request.body as any
-    const user = await prisma.user.create({
-        data: {login, firstname,lastname}
-    })
-    reply.code(201)
-    return user
-})
-
+userRoutes(app)
 
 app.listen({ port: 3000 }, () => {
     console.log("Server running on http://localhost:3000")
